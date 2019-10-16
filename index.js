@@ -19,24 +19,30 @@ The expected result is: `[1,2,3,4,5,6,7]`
 ## Extra
 
 Write tests using `Jest`
-
  */
 
 function flatArray(array, res = []) {
-    for (i = 0; i < array.length; i++) {
-
+    for (let i = 0; i < array.length; i++) {
         //il valore a quella posizione è un array?
         if (Array.isArray(array[i])) {
-            //toglie le parentesi ed aggiunge il valore a res
+            //l'array è maggiore di uno?
+            if (array[i].length > 1) {
+                let subArray = []
+                for (let j = 0; j < array.length; j++) {
+                    subArray = [...array[i]]
+                }
+                res.push(...subArray);
+            }
             res = [...res, ...array[i]]
         }
         if (!Array.isArray(array[i]))
             res = [...res, array[i]]
     }
     return res;
-}
-flatArray([1, [2], [67, [7, [57], 5]]])
 
-//1,2,67,[7 ,[57] ,5]
+}
+flatArray([1, [29], [67, [7, [57], 5]]])
+
+//[67,[7 ,[57] ,5]]
 
 module.exports = flatArray;
