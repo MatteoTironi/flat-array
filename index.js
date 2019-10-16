@@ -45,4 +45,8 @@ flatArray([1, [29], [67, [7, [57], 5]]])
 
 //[67,[7 ,[57] ,5]]
 
+function sum(arr) {
+  // your code here...
+}
+
 module.exports = flatArray;
